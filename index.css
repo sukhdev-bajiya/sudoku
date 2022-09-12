@@ -4,7 +4,8 @@
 }
 
 body {
-    background-color: black;
+    /* background-image: url("https://community.arm.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-37-98/blogimage_5F00_1600x900_5F00_3.jpg");
+    background-size: 100%; */
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     -moz-user-select: none;
@@ -14,6 +15,10 @@ body {
     flex-direction: column;
 }
 
+:disabled {
+    background-color: black;
+    color: white;
+}
 
 .digit-group {
     display: grid;
@@ -37,16 +42,25 @@ body {
     outline: none;
     border-radius: 5px;
     text-align: center;
-    color: orange;
+    border: 1px solid gray;
 }
 
 .sudokuBtn {
     cursor: pointer;
-    padding: 5px 10px;
-    font-size: 16px;
+    padding: 10px 15px;
+    font-size: 18px;
     margin: 15px 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 7px;
+    border: none;
 }
 
 #startSudokuDiv {
     display: none;
+    margin: auto;
+}
+
+#startSudokuDiv button {
+    width: 610px;
 }

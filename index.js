@@ -1,33 +1,20 @@
-$(".digit-group")
-  .find("input")
-  .each(function () {
-    $(this).attr("maxlength", 1);
-    $(this).on("keyup", function (e) {
-      var parent = $($(this).parent());
-      if (e.keyCode === 8 || e.keyCode === 37) {
-        var prev = parent.find("input#" + $(this).data("previous"));
-
-        if (prev.length) {
-          $(prev).select();
-        }
-      } else if (
-        (e.keyCode > 48 && e.keyCode <= 57) ||
-        (e.keyCode > 96 && e.keyCode <= 105)
-      ) {
-        var next = parent.find("input#" + $(this).data("next"));
-
-        if (next.length) {
-          $(next).select();
-        } else {
-          if (parent.data("autosubmit")) {
-            parent.submit();
-          }
-        }
+let otp = document.querySelector(".digit-group");
+for (let pin of otp.children) {
+  pin.onkeyup = function (e) {
+    if (e.key >= 1 && e.key <= 9) {
+      if (pin.nextElementSibling) {
+        pin.nextElementSibling.focus();
       }
-    });
-  });
+    } else {
+      alert("Please Enter A Number");
+    }
+  };
+}
 
 function solveSudokuFun() {
+  document.getElementById("solveSudoku").setAttribute("disabled", true);
+  document.getElementById("randomSudoku").setAttribute("disabled", true);
+  document.getElementById("resetSudoku").removeAttribute("disabled");
   let inputBoxs = document.querySelectorAll("input");
   for (let i = 0; i < inputBoxs.length; i++) {
     inputBoxs[i].setAttribute("disabled", true);
@@ -35,6 +22,9 @@ function solveSudokuFun() {
   document.getElementById("startSudokuDiv").style.display = "block";
 }
 function resetSudokuFun() {
+  document.getElementById("solveSudoku").removeAttribute("disabled");
+  document.getElementById("randomSudoku").removeAttribute("disabled");
+  document.getElementById("resetSudoku").setAttribute("disabled", true);
   let inputBoxs = document.querySelectorAll("input");
   for (let i = 0; i < inputBoxs.length; i++) {
     inputBoxs[i].disabled = false;
@@ -45,6 +35,7 @@ function resetSudokuFun() {
 function startSudokuFun() {
   document.getElementById("solveSudoku").setAttribute("disabled", true);
   document.getElementById("resetSudoku").setAttribute("disabled", true);
+  document.getElementById("randomSudoku").setAttribute("disabled", true);
   document.getElementById("startSudoku").setAttribute("disabled", true);
 
   let sudokuMatrix = new Array(9);
@@ -59,18 +50,39 @@ function startSudokuFun() {
     }
   }
   if (solveFunStart(sudokuMatrix)) {
-    for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
+    let i = 0,
+      j = 0;
+    const sudokuOutput = setInterval(() => {
+      if (i % 2 == 0) {
         document.getElementById(`digit-${i * 9 + j + 1}`).value =
           sudokuMatrix[i][j];
+        j++;
+        if (j == 9) {
+          i++;
+          j = 8;
+        }
+      } else {
+        document.getElementById(`digit-${i * 9 + j + 1}`).value =
+          sudokuMatrix[i][j];
+        j--;
+        if (j == -1) {
+          i++;
+          j = 0;
+        }
       }
-    }
+      if (i == 9) {
+        document.getElementById(
+          "startSudokuDiv"
+        ).innerHTML = `<button id="restartSudoku" class="sudokuBtn" onclick="restartSudokuFun()">Restart Sudoku</button>`;
+        clearInterval(sudokuOutput);
+      }
+    }, 100);
   } else {
     alert(-1);
+    document.getElementById(
+      "startSudokuDiv"
+    ).innerHTML = `<button id="restartSudoku" class="sudokuBtn" onclick="restartSudokuFun()">Restart Sudoku</button>`;
   }
-  document.getElementById(
-    "startSudokuDiv"
-  ).innerHTML = `<button id="restartSudoku" class="sudokuBtn" onclick="restartSudokuFun()">Restart Sudoku</button>`;
 }
 
 function solveFunStart(sudokuMatrix) {
@@ -92,13 +104,10 @@ function solveFunStart(sudokuMatrix) {
   for (let i = 1; i <= 9; i++) {
     if (safe(sudokuMatrix, p, q, i)) {
       sudokuMatrix[p][q] = i;
-      document.getElementById(`digit-${p * 9 + q + 1}`).value = i;
-
       if (solveFunStart(sudokuMatrix)) {
         return true;
       } else {
         sudokuMatrix[p][q] = 0;
-        document.getElementById(`digit-${p * 9 + q + 1}`).value = 0;
       }
     }
   }
@@ -123,15 +132,32 @@ function safe(sudokuMatrix, p, q, i) {
 }
 
 function restartSudokuFun() {
+  document.getElementById("solveSudoku").removeAttribute("disabled");
+  document.getElementById("randomSudoku").removeAttribute("disabled");
+  document.getElementById("resetSudoku").removeAttribute("disabled");
   let inputBoxs = document.querySelectorAll("input");
   for (let j = 0; j <= 80; j++) {
     document.getElementById(`digit-${j + 1}`).value = "";
-    inputBoxs[j].disabled = false;
+    inputBoxs[j].removeAttribute("disabled");
   }
-  document.getElementById("solveSudoku").disabled = false;
-  document.getElementById("resetSudoku").disabled = false;
   document.getElementById(
     "startSudokuDiv"
   ).innerHTML = `<button id="startSudoku" class="sudokuBtn" onclick="startSudokuFun()">Start Sudoku</button>`;
   document.getElementById("startSudokuDiv").style.display = "none";
+}
+
+function randomSudokuFun() {
+  let inputBoxs = document.querySelectorAll("input");
+  for (let i = 0; i < inputBoxs.length; i++) {
+    inputBoxs[i].setAttribute("disabled", true);
+  }
+  document.getElementById(`digit-1`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-13`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-25`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-29`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-41`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-53`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-57`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-69`).value = Math.floor(Math.random() * 9 + 1);
+  document.getElementById(`digit-81`).value = Math.floor(Math.random() * 9 + 1);
 }
