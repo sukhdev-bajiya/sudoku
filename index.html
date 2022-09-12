@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku || Play</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <form method="get" class="digit-group" data-group-name="digits" data-autosubmit="false" autocomplete="off">
+        <input type="text" id="digit-1" name="digit-1" data-next="digit-2" />
+        <input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" />
+        <input type="text" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" />
+        <input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" />
+        <input type="text" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" />
+        <input type="text" id="digit-6" name="digit-6" data-next="digit-7" data-previous="digit-5" />
+        <input type="text" id="digit-7" name="digit-7" data-next="digit-8" data-previous="digit-6" />
+        <input type="text" id="digit-8" name="digit-8" data-next="digit-9" data-previous="digit-7" />
+        <input type="text" id="digit-9" name="digit-9" data-next="digit-10" data-previous="digit-8" />
+        <input type="text" id="digit-10" name="digit-10" data-next="digit-11" data-previous="digit-9" />
+        <input type="text" id="digit-11" name="digit-11" data-next="digit-12" data-previous="digit-10" />
+        <input type="text" id="digit-12" name="digit-12" data-next="digit-13" data-previous="digit-11" />
+        <input type="text" id="digit-13" name="digit-13" data-next="digit-14" data-previous="digit-12" />
+        <input type="text" id="digit-14" name="digit-14" data-next="digit-15" data-previous="digit-13" />
+        <input type="text" id="digit-15" name="digit-15" data-next="digit-16" data-previous="digit-14" />
+        <input type="text" id="digit-16" name="digit-16" data-next="digit-17" data-previous="digit-15" />
+        <input type="text" id="digit-17" name="digit-17" data-next="digit-18" data-previous="digit-16" />
+        <input type="text" id="digit-18" name="digit-18" data-next="digit-19" data-previous="digit-17" />
+        <input type="text" id="digit-19" name="digit-19" data-next="digit-20" data-previous="digit-18" />
+        <input type="text" id="digit-20" name="digit-20" data-next="digit-21" data-previous="digit-19" />
+        <input type="text" id="digit-21" name="digit-21" data-next="digit-22" data-previous="digit-20" />
+        <input type="text" id="digit-22" name="digit-22" data-next="digit-23" data-previous="digit-21" />
+        <input type="text" id="digit-23" name="digit-23" data-next="digit-24" data-previous="digit-22" />
+        <input type="text" id="digit-24" name="digit-24" data-next="digit-25" data-previous="digit-23" />
+        <input type="text" id="digit-25" name="digit-25" data-next="digit-26" data-previous="digit-24" />
+        <input type="text" id="digit-26" name="digit-26" data-next="digit-27" data-previous="digit-25" />
+        <input type="text" id="digit-27" name="digit-27" data-next="digit-28" data-previous="digit-26" />
+        <input type="text" id="digit-28" name="digit-28" data-next="digit-29" data-previous="digit-27" />
+        <input type="text" id="digit-29" name="digit-29" data-next="digit-30" data-previous="digit-28" />
+        <input type="text" id="digit-30" name="digit-30" data-next="digit-31" data-previous="digit-29" />
+        <input type="text" id="digit-31" name="digit-31" data-next="digit-32" data-previous="digit-30" />
+        <input type="text" id="digit-32" name="digit-32" data-next="digit-33" data-previous="digit-31" />
+        <input type="text" id="digit-33" name="digit-33" data-next="digit-34" data-previous="digit-32" />
+        <input type="text" id="digit-34" name="digit-34" data-next="digit-35" data-previous="digit-33" />
+        <input type="text" id="digit-35" name="digit-35" data-next="digit-36" data-previous="digit-34" />
+        <input type="text" id="digit-36" name="digit-36" data-next="digit-37" data-previous="digit-35" />
+        <input type="text" id="digit-37" name="digit-37" data-next="digit-38" data-previous="digit-36" />
+        <input type="text" id="digit-38" name="digit-38" data-next="digit-39" data-previous="digit-37" />
+        <input type="text" id="digit-39" name="digit-39" data-next="digit-40" data-previous="digit-38" />
+        <input type="text" id="digit-40" name="digit-40" data-next="digit-41" data-previous="digit-39" />
+        <input type="text" id="digit-41" name="digit-41" data-next="digit-42" data-previous="digit-40" />
+        <input type="text" id="digit-42" name="digit-42" data-next="digit-43" data-previous="digit-41" />
+        <input type="text" id="digit-43" name="digit-43" data-next="digit-44" data-previous="digit-42" />
+        <input type="text" id="digit-44" name="digit-44" data-next="digit-45" data-previous="digit-43" />
+        <input type="text" id="digit-45" name="digit-45" data-next="digit-46" data-previous="digit-44" />
+        <input type="text" id="digit-46" name="digit-46" data-next="digit-47" data-previous="digit-45" />
+        <input type="text" id="digit-47" name="digit-47" data-next="digit-48" data-previous="digit-46" />
+        <input type="text" id="digit-48" name="digit-48" data-next="digit-49" data-previous="digit-47" />
+        <input type="text" id="digit-49" name="digit-49" data-next="digit-50" data-previous="digit-48" />
+        <input type="text" id="digit-50" name="digit-50" data-next="digit-51" data-previous="digit-49" />
+        <input type="text" id="digit-51" name="digit-51" data-next="digit-52" data-previous="digit-50" />
+        <input type="text" id="digit-52" name="digit-52" data-next="digit-53" data-previous="digit-51" />
+        <input type="text" id="digit-53" name="digit-53" data-next="digit-54" data-previous="digit-52" />
+        <input type="text" id="digit-54" name="digit-54" data-next="digit-55" data-previous="digit-53" />
+        <input type="text" id="digit-55" name="digit-55" data-next="digit-56" data-previous="digit-54" />
+        <input type="text" id="digit-56" name="digit-56" data-next="digit-57" data-previous="digit-55" />
+        <input type="text" id="digit-57" name="digit-57" data-next="digit-58" data-previous="digit-56" />
+        <input type="text" id="digit-58" name="digit-58" data-next="digit-59" data-previous="digit-57" />
+        <input type="text" id="digit-59" name="digit-59" data-next="digit-60" data-previous="digit-58" />
+        <input type="text" id="digit-60" name="digit-60" data-next="digit-61" data-previous="digit-59" />
+        <input type="text" id="digit-61" name="digit-61" data-next="digit-62" data-previous="digit-60" />
+        <input type="text" id="digit-62" name="digit-62" data-next="digit-63" data-previous="digit-61" />
+        <input type="text" id="digit-63" name="digit-63" data-next="digit-64" data-previous="digit-62" />
+        <input type="text" id="digit-64" name="digit-64" data-next="digit-65" data-previous="digit-63" />
+        <input type="text" id="digit-65" name="digit-65" data-next="digit-66" data-previous="digit-64" />
+        <input type="text" id="digit-66" name="digit-66" data-next="digit-67" data-previous="digit-65" />
+        <input type="text" id="digit-67" name="digit-67" data-next="digit-68" data-previous="digit-66" />
+        <input type="text" id="digit-68" name="digit-68" data-next="digit-69" data-previous="digit-67" />
+        <input type="text" id="digit-69" name="digit-69" data-next="digit-70" data-previous="digit-68" />
+        <input type="text" id="digit-70" name="digit-70" data-next="digit-71" data-previous="digit-69" />
+        <input type="text" id="digit-71" name="digit-71" data-next="digit-72" data-previous="digit-70" />
+        <input type="text" id="digit-72" name="digit-72" data-next="digit-73" data-previous="digit-71" />
+        <input type="text" id="digit-73" name="digit-73" data-next="digit-74" data-previous="digit-72" />
+        <input type="text" id="digit-74" name="digit-74" data-next="digit-75" data-previous="digit-73" />
+        <input type="text" id="digit-75" name="digit-75" data-next="digit-76" data-previous="digit-74" />
+        <input type="text" id="digit-76" name="digit-76" data-next="digit-77" data-previous="digit-75" />
+        <input type="text" id="digit-77" name="digit-77" data-next="digit-78" data-previous="digit-76" />
+        <input type="text" id="digit-78" name="digit-78" data-next="digit-79" data-previous="digit-77" />
+        <input type="text" id="digit-79" name="digit-79" data-next="digit-80" data-previous="digit-78" />
+        <input type="text" id="digit-80" name="digit-80" data-next="digit-81" data-previous="digit-79" />
+        <input type="text" id="digit-81" name="digit-81" data-previous="digit-80" />
+    </form>
+
+    <div style="margin: auto;">
+        <button id="solveSudoku" class="sudokuBtn" onclick="solveSudokuFun()">Solve Sudoku</button>
+        <button id="resetSudoku" class="sudokuBtn" onclick="resetSudokuFun()">Reset Sudoku</button>
+    </div>
+    <div id="startSudokuDiv" style="margin: auto;">
+        <button id="startSudoku" class="sudokuBtn" onclick="startSudokuFun()">Start Sudoku</button>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./index.js"></script>
+
+</html>
