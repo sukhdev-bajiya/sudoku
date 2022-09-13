@@ -18,6 +18,7 @@ body {
 :disabled {
     background-color: black;
     color: white;
+    border: none;
 }
 
 .digit-group {
@@ -53,7 +54,6 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
     border-radius: 7px;
-    border: none;
 }
 
 #startSudokuDiv {
